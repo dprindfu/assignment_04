@@ -86,10 +86,4 @@ if upload is not None:
 
     export = payroll_export(payroll)
 
-    st.download_button(
-        label="Download payroll CSV",
-        data=export.to_csv(index=False),
-        file_name=f"payroll_{payroll_date}.csv",
-        mime="text/csv",
-        key="download"
-    )
+    st.download_button(label="Download payroll CSV", data=export.to_csv(index=False), file_name=f"payroll_{payroll_date}.csv", mime="text/csv", key="download")
