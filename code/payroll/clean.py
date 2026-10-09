@@ -18,6 +18,7 @@ This step is walked through line by line in each docstring. The next two steps
 give you less.
 """
 
+from altair import value
 import pandas as pd
 
 
@@ -48,6 +49,11 @@ def parse_hours(value) -> float:
     - The mistake people make: forgetting the `/ 60`. `"45m"` is three quarters
       of an hour, not 45 hours, and `test_parse_hours` will tell you.
     """
+    
+    if pd.isna(value):
+        return 0.0
+
+
     if value is None:
         return 0.0
     
@@ -102,6 +108,11 @@ def clean_currency(value) -> float:
     - You wrote this function in Assignment 02. It is the same function. That
       is not an accident — cleaning currency is something every pipeline does.
     """
+    
+    if pd.isna(value):
+        return 0.0
+
+
     if value is None:
         return 0.0
 
