@@ -49,11 +49,7 @@ st.write("Upload this week's timesheet CSV to calculate payroll.")
 
 roster = load_employees()
 
-upload = st.file_uploader(
-    "Upload weekly timesheet",
-    type=["csv"],
-    key="timesheet"
-)
+upload = st.file_uploader("Upload weekly timesheet", type=["csv"], key="timesheet")
 
 if upload is not None:
     timesheet = load_timesheet(upload)
@@ -86,4 +82,10 @@ if upload is not None:
 
     export = payroll_export(payroll)
 
-    st.download_button(label="Download payroll CSV", data=export.to_csv(index=False), file_name=f"payroll_{payroll_date}.csv", mime="text/csv", key="download")
+    st.download_button(
+        label="Download payroll CSV",
+        data=export.to_csv(index=False),
+        file_name=f"payroll_{payroll_date}.csv",
+        mime="text/csv",
+        key="download",
+    )

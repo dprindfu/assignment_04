@@ -20,6 +20,7 @@ give you less.
 
 import pandas as pd
 
+
 def parse_hours(value) -> float:
     """Read a weekly-hours string the way a shift lead typed it; return a float.
 
@@ -52,7 +53,7 @@ def parse_hours(value) -> float:
 
     if value is None:
         return 0.0
-    
+
     if type(value) is not str:
         try:
             return float(value)
@@ -62,7 +63,7 @@ def parse_hours(value) -> float:
 
     if text == "":
         return 0.0
-    
+
     if "h" not in text and "m" not in text:
         try:
             return float(text)
@@ -81,7 +82,8 @@ def parse_hours(value) -> float:
         return hours
     except ValueError:
         return 0.0
-        
+
+
 def clean_currency(value) -> float:
     """Read a dollar amount as HR typed it; return it as a float.
 
@@ -120,6 +122,7 @@ def clean_currency(value) -> float:
         return float(text)
     except ValueError:
         return 0.0
+
 
 def add_hours_worked(timesheet: pd.DataFrame) -> pd.DataFrame:
     """Return a copy of the timesheet with one new column, `hours_worked` (float).

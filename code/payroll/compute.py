@@ -16,7 +16,7 @@ import pandas as pd
 from .clean import add_hourly_rate, add_hours_worked
 from .join import merge_employees
 
-OVERTIME_THRESHOLD = 40.0   # weekly hours above this are paid at time-and-a-half
+OVERTIME_THRESHOLD = 40.0  # weekly hours above this are paid at time-and-a-half
 OVERTIME_MULTIPLIER = 1.5
 
 
@@ -123,13 +123,14 @@ def payroll_export(payroll: pd.DataFrame) -> pd.DataFrame:
     """
     payroll = payroll[payroll["pay_type"] != "unmatched"]
 
-    out = pd.DataFrame({
-        "payrolldate": payroll["payroll_date"],
-        "employeeid": payroll["employee_id"],
-        "hours": payroll["hours_worked"],
-        "rate": payroll["hourly_rate_usd"],
-        "total": payroll["gross_pay"]
-    })
+    out = pd.DataFrame(
+        {
+            "payrolldate": payroll["payroll_date"],
+            "employeeid": payroll["employee_id"],
+            "hours": payroll["hours_worked"],
+            "rate": payroll["hourly_rate_usd"],
+            "total": payroll["gross_pay"],
+        }
+    )
 
     return out
-
